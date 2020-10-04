@@ -14,7 +14,7 @@ script:
   - git clone https://github.com/ritboylei/sync-images.git
   - cd ./sync-images
   - echo `date "+%Y-%m-%d"` > build-time.txt
-  - git remote set-url origin https://${GITHUB_TOKEN}@github.com/forecho/blog.git
+  - git remote set-url origin https://${GITHUB_TOKEN}@github.com/ritboylei/sync-images.git
   - git add .
-  - git commit -m "同步"
+  - git commit -m "sync images `date "+%Y-%m-%d"`"
   - git push
