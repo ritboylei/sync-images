@@ -1,22 +1,9 @@
 os: linux
 dist: trusty
 
-env:
-  global:
-    - CODE_DIR=blog-code
-
 git:
   depth: false
   submodules: false
-
-#cache:
-#  directories:
-#   - ${BLOG_CODE_DIR}/node_modules
-
-before_install:
-  # Git Config
-  - git config --global user.name "ritboy"
-  - git config --global user.email "ritboylei@gmail.com"
 
 script:
   # Git Config
@@ -24,9 +11,10 @@ script:
   - git config --global user.email "ritboylei@gmail.com"
 
   # clone 代码
-  - git clone https://github.com/ritboylei/sync-images.git ${CODE_DIR}
-  - cd ./${CODE_DIR}
+  - git clone https://github.com/ritboylei/sync-images.git
+  - cd ./sync-images
   - echo `date "+%Y-%m-%d"` > build-time.txt
+  - git remote set-url origin https://${GITHUB_TOKEN}@github.com/forecho/blog.git
   - git add .
   - git commit -m "同步"
   - git push
